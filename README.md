@@ -3,8 +3,8 @@ This is a Android Tools
 
 How to compile:
 -------------------------
-cd <SOURCE_DIR>
-make clean && make
+cd \<SOURCE_DIR\>  
+make clean && make  
   
 usage: bootimg
 -------------------------
