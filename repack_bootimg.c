@@ -303,7 +303,7 @@ int repack_bootimg(int argc, char **argv)
             hdr.kernel_addr =  base + kernel_offset;
             hdr.ramdisk_addr = base + ramdisk_offset;
             hdr.second_addr =  base + second_offset;
-            hdr.tags_addr =    base + tags_addr;
+            hdr.tags_addr =    base + tags_offset;
         } else if(!strcmp(arg, "--kernel_offset")) {
             kernel_offset = strtoul(val, 0, 16);
         } else if(!strcmp(arg, "--ramdisk_offset")) {

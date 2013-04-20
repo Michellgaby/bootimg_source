@@ -39,11 +39,11 @@ int main(int argc, char **argv)
 
     if (!strcmp(argv[0], "--unpack-bootimg"))
         unpack_bootimg(argc, argv);
-    //else if (!strcmp(argv[0], "--unpack-ramdisk"))
-        //unpack_ramdisk(argc, argv);
+    else if (!strcmp(argv[0], "--unpack-ramdisk"))
+        unpack_ramdisk(argc, argv);
     else if (!strcmp(argv[0], "--repack-bootimg"))
         repack_bootimg(argc, argv);
-    //else if (!strcmp(argv[0], "--repack-ramdisk"))
-        //repack_ramdisk(argc, argv);
+    else if (!strcmp(argv[0], "--repack-ramdisk"))
+        repack_ramdisk(argc, argv);
     else return usage();
 }
