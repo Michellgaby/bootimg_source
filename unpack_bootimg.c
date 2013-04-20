@@ -10,7 +10,7 @@
 
 typedef unsigned char byte;
 
-int read_padding(FILE* f, unsigned itemsize, int pagesize);
+int read_padding(FILE* f, unsigned itemsize, int pagesize)
 {
     byte* buf = (byte*)malloc(sizeof(byte) * pagesize);
     unsigned pagemask = pagesize - 1;
@@ -55,11 +55,13 @@ int unpack_bootimg(int argc, char** argv)
     argc--;
     argv++;
 
-    if (!strcmp(argv[0], "--help"))
-        return unpack_bootimg_usage();
-
     if (argc > 0)
+    {
+        if (!strcmp(argv[0], "--help"))
+            return unpack_bootimg_usage();
+
         filename = argv[0];
+    }
 
     int total_read = 0;
     FILE *f;
@@ -90,19 +92,19 @@ int unpack_bootimg(int argc, char** argv)
     printf("Second  |addr| = 0x%08x\n" , header.second_addr  /*- 0x00f00000*/);
     printf("Tags    |addr| = 0x%08x\n" , header.tags_addr    /*- 0x00000100*/);
     printf("Page    |size| = \"%d\"\n" , header.page_size);
-    printf("Name    |char| = \"%s\"\n" , header.name);
+    printf("Board   |char| = \"%s\"\n" , header.name);
     printf("Cmdline |char| = \"%s\"\n" , header.cmdline);
     cut();
-    
+
     pagesize = header.page_size;
     
     char boottmp[600];
-    sprintf(boottmp, "Kenel   [addr] = 0x%08x\n"
+    sprintf(boottmp, "Kernel  [addr] = 0x%08x\n"
                      "Ramdisk [addr] = 0x%08x\n"
                      "Second  [addr] = 0x%08x\n"
                      "Tags    [addr] = 0x%08x\n"
                      "Page    [size] = %d\n"
-                     "Name    [char] = %s\n"
+                     "Board   [char] = %s\n"
                      "Cmdline [char] = %s\n",
     header.kernel_addr, header.ramdisk_addr, header.second_addr,
     header.tags_addr, header.page_size, header.name, header.cmdline);

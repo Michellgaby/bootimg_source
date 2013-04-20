@@ -5,16 +5,16 @@
  * bootimg function
  */
 
-void repack_bootimg(int argc, char **argv);
-void repack_ramdisk(int argc, char **argv);
-void unpack_bootimg(int argc, char **argv);
-void unpack_ramdisk(int argc, char **argv);
+int repack_bootimg(int argc, char **argv);
+int repack_ramdisk(int argc, char **argv);
+int unpack_bootimg(int argc, char **argv);
+int unpack_ramdisk(int argc, char **argv);
 
 /*==========================================================================================
  * bootimg hdr
  */
 
-typedef struct bootimg_hdr bootimg_hdr
+typedef struct bootimg_hdr bootimg_hdr;
 
 #define BOOT_MAGIC "ANDROID!"
 #define BOOT_MAGIC_SIZE 8
@@ -49,7 +49,7 @@ struct bootimg_hdr
  * ramdisk hdr
  */
 
-typedef struct ramdisk_hdr ramdisk_hdr
+typedef struct ramdisk_hdr ramdisk_hdr;
 
 #define RAMDISK_MAGIC "070701"
 
