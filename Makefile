@@ -1,15 +1,12 @@
-objects = bootimg.o unpack_bootimg.o repack_bootimg.o \
-		  unpack_ramdisk.o repack_ramdisk.o
-
-bootimg : $(objects)
-	cc -o bootimg $(objects)
-
-bootimg.o : bootimg.c bootimg.h
-unpack_bootimg.o : unpack_bootimg.c
-repack_bootimg.o : repack_bootimg.c
-unpack_ramdisk.o : unpack_ramdisk.c
-repack_ramdisk.o : repack_ramdisk.c
+bootimg :
+	gcc -o bootimg bootimg.c unpack_bootimg.c repack_bootimg.c unpack_ramdisk.c \
+             repack_ramdisk.c zlib/test/minigzip.c zlib/adler32.c \
+             zlib/compress.c zlib/crc32.c zlib/deflate.c \
+             zlib/gzclose.c zlib/gzlib.c zlib/gzread.c \
+             zlib/gzwrite.c zlib/infback.c zlib/inflate.c \
+             zlib/inftrees.c zlib/inffast.c zlib/slhash.c  \
+             zlib/trees.c zlib/uncompr.c zlib/zutil.c
 
 .PHONY : clean
 clean :
-	rm -f bootimg $(objects)
+	rm -f bootimg

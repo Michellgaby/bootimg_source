@@ -1,7 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdarg.h>
 #include <sys/ioctl.h>
+
+void die(const char *why, ...)
+{
+    va_list ap;
+
+    va_start(ap, why);
+    fprintf(stderr,"error: ");
+    vfprintf(stderr, why, ap);
+    fprintf(stderr,"\n");
+    va_end(ap);
+    exit(1);
+}
 
 int cut()
 {
